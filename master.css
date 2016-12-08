@@ -28,6 +28,15 @@ html, body {
   width: 200px;
   height: 210px;
   background: #444469;
+  transition: height 1s ease;
+
+  /*animation: bob-height 5s infinite ease-in-out;*/
+  /*-webkit-animation: bob-height 5s infinite ease-in-out;*/
+}
+
+.cat-body:hover {
+  height: 207px;
+  transition: height 1s ease;
 }
 
 .cat-ear-inside {
@@ -103,12 +112,28 @@ html, body {
   background: #9688d8;
 }
 
+@keyframes bob-height {
+  0% { height: 200; }
+  50% { height: 210; }
+  100% { height: 200; }
+}
+
+@-webkit-keyframes bob-height {
+  0% { height: 200; }
+  50% { height: 210; }
+  100% { height: 200; }
+}
+
+
+/*  TEXT  */
 .tooltip {
   color: #fff;
   font-size: 25px !important;
   background-color: #6b8ad2 !important;
   pointer-events: auto !important;
   font-family: 'Press Start 2P', cursive;
+  /*font-family: 'Unica One', cursive;*/
+  padding: 12px 8px !important;
 }
 
 .tooltip::after {
@@ -124,6 +149,7 @@ html, body {
   margin-top: 10px;
   text-align: center;
   color: white;
+  cursor: default;
 }
 
 .text-waffles {
@@ -142,5 +168,3 @@ html, body {
   font-size: 60px;
   font-family: 'Megrim', cursive;*/
 }
-
-font-family: 'Unica One', cursive;

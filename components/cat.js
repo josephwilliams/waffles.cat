@@ -1,5 +1,5 @@
 import React from 'react';
-
+import _ from 'lodash';
 import ReactTooltip from 'react-tooltip';
 
 export default class Cat extends React.Component {
@@ -8,9 +8,13 @@ export default class Cat extends React.Component {
   }
 
   render () {
+    const catSounds = ['meow', 'purr', 'hiss', 'hello'];
     return (
-    <div className="cat-container-circle" data-tip="meow" data-event='click'>
-    <ReactTooltip class="tooltip" delayHide={100} />
+    <div
+      className="cat-container-circle"
+      data-tip="meow" data-event='click'
+    >
+    <ReactTooltip class="tooltip" getContent={() => _.sample(catSounds)} />
       <div className="cat-body">
         <div className="cat-ear left" />
         <div className="cat-ear right" />
