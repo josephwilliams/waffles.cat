@@ -21589,7 +21589,8 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'cat-container-circle' },
+	        { className: 'cat-container-circle', 'data-tip': 'meow', 'data-event': 'click' },
+	        _react2.default.createElement(_reactTooltip2.default, { 'class': 'tooltip', delayHide: 100 }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'cat-body' },

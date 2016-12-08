@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ReactTooltip from 'react-tooltip'
+import ReactTooltip from 'react-tooltip';
 
 export default class Cat extends React.Component {
   constructor () {
@@ -9,7 +9,8 @@ export default class Cat extends React.Component {
 
   render () {
     return (
-    <div className="cat-container-circle">
+    <div className="cat-container-circle" data-tip="meow" data-event='click'>
+    <ReactTooltip class="tooltip" delayHide={100} />
       <div className="cat-body">
         <div className="cat-ear left" />
         <div className="cat-ear right" />

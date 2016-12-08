@@ -19,6 +19,8 @@ html, body {
   margin: 0 auto;
 
   overflow: hidden;
+
+  cursor: pointer;
 }
 
 .cat-body {
@@ -101,7 +103,22 @@ html, body {
   background: #9688d8;
 }
 
+.tooltip {
+  color: #fff;
+  font-size: 25px !important;
+  background-color: #6b8ad2 !important;
+  pointer-events: auto !important;
+  font-family: 'Press Start 2P', cursive;
+}
 
+.tooltip::after {
+  border-color: transparent !important;
+}
+
+.tooltip:hover {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
 
 .title-text {
   margin-top: 10px;
@@ -127,4 +144,3 @@ html, body {
 }
 
 font-family: 'Unica One', cursive;
-font-family: 'Press Start 2P', cursive;
