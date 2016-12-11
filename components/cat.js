@@ -2,14 +2,10 @@ import React from 'react';
 import _ from 'lodash';
 import ReactTooltip from 'react-tooltip';
 
-export default class Cat extends React.Component {
-  constructor () {
-    super();
-  }
+const catSounds = ['meow', 'purr', 'hiss', 'hello'];
 
-  render () {
-    const catSounds = ['meow', 'purr', 'hiss', 'hello'];
-    return (
+const Cat = () => (
+  <div className="cat-wrapper">
     <div
       className="cat-container-circle"
       data-tip="meow" data-event='click'
@@ -25,6 +21,16 @@ export default class Cat extends React.Component {
         <div className="cat-mouth" />
       </div>
     </div>
-    );
-  }
-}
+    <div className="title-text">
+      <div className="text-waffles">
+        {'waffles'}
+      </div>
+      <div className="text-the">
+        {'the'}
+      </div>
+      <div className="text-cat">
+        {'cat'}
+      </div>
+    </div>
+  </div>
+);
