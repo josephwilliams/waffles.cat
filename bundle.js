@@ -21534,6 +21534,10 @@
 
 	'use strict';
 	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
@@ -21577,7 +21581,7 @@
 	    ),
 	    _react2.default.createElement(
 	      'div',
-	      { className: 'title-text' },
+	      { className: 'cat-text' },
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'text-waffles' },
@@ -21596,6 +21600,8 @@
 	    )
 	  );
 	};
+	
+	exports.default = Cat;
 
 /***/ },
 /* 180 */

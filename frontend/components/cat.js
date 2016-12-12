@@ -21,7 +21,7 @@ const Cat = () => (
         <div className="cat-mouth" />
       </div>
     </div>
-    <div className="title-text">
+    <div className="cat-text">
       <div className="text-waffles">
         {'waffles'}
       </div>
@@ -34,3 +34,5 @@ const Cat = () => (
     </div>
   </div>
 );
+
+export default Cat;
