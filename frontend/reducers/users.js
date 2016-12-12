@@ -42,28 +42,28 @@ export function extractCurrentUser(globalState) {
 }
 
 // reducer
-const reducer = (oldState = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch(action.type) {
     case ACTION_GET_USERS_SUCCESS: {
       const { users } = action.payload;
       return {
-        ...oldState,
+        ...state,
         allUsers: allUsers,
-      }
+      };
     }
 
     case ACTION_GET_USERS_ERROR: {
       const { error } = action.payload;
       return {
-        ...oldState,
+        ...state,
         error: error,
-      }
+      };
     }
 
     case ACTION_GET_CURRENT_USER_SUCCESS: {
       const { currentUser } = action.payload;
       return {
-        ...oldState,
+        ...state,
         currentUser: currentUser,
       };
     }
@@ -71,7 +71,7 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_GET_CURRENT_USER_ERROR: {
       const { error } = action.payload;
       return {
-        ...oldState,
+        ...state,
         error: error,
       };
     }
@@ -79,7 +79,7 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_AUTHENTICATE_USER_SUCCESS: {
       const { currentUser } = action.payload;
       return {
-        ...oldState,
+        ...state,
         currentUser: currentUser,
       };
     }
@@ -87,7 +87,7 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_AUTHENTICATE_USER_ERROR: {
       const { error } = action.payload;
       return {
-        ...oldState,
+        ...state,
         error: error,
       };
     }
@@ -95,7 +95,7 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_LOGOUT_USER_SUCCESS: {
       const { currentUser } = action.payload;
       return {
-        ...oldState,
+        ...state,
         currentUser: null,
       };
     }
@@ -104,13 +104,13 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_LOGOUT_USER_ERROR: {
       const { error } = action.payload;
       return {
-        ...oldState,
+        ...state,
         error: error,
       };
     }
 
     default:
-      return oldState;
+      return state;
   }
 }
 

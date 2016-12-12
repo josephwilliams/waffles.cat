@@ -21,6 +21,7 @@ export const STORE_KEY = 'messages';
 // initial state
 const initialState = {
   messages: [],
+  error: null,
 };
 
 // state selectors
@@ -37,31 +38,32 @@ export function extractAddMessageError(globalState) {
 }
 
 // reducer
-const reducer = (oldState = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch(action.type) {
     case ACTION_GET_MESSAGES_SUCCESS: {
       const { messages } = action.payload;
       return {
-        ...oldState,
+        ...state,
         messages: messages,
-      }
+      };
     }
 
     case ACTION_GET_MESSAGES_ERROR: {
-      const { messages } = action.payload;
+      const { error } = action.payload;
       return {
-        ...oldState,
+        ...state,
         messages: null,
-      }
+        error: error,
+      };
     }
 
     case ACTION_ADD_MESSAGE_SUCCESS: {
       const { addedMessage } = action.payload;
       return {
-        ...oldState,
+        ...state,
         messages: [
           addedMessage,
-          ...oldState.messages,
+          ...state.messages,
         ],
       };
     }
@@ -69,13 +71,13 @@ const reducer = (oldState = initialState, action) => {
     case ACTION_ADD_MESSAGE_ERROR: {
       const { addMessageError } = action.payload;
       return {
-        ...oldState,
-        addMessageError: addMessageError,
+        ...state,
+        error: addMessageError,
       };
     }
 
     default:
-      return oldState;
+      return state;
   }
 }
 
