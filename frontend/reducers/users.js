@@ -42,7 +42,7 @@ export function extractCurrentUser(globalState) {
 }
 
 // reducer
-const reducer = (state = initialState, action) => {
+export function reducer(state = initialState, action) {
   switch(action.type) {
     case ACTION_GET_USERS_SUCCESS: {
       const { users } = action.payload;

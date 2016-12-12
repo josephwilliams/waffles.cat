@@ -1,6 +1,6 @@
 module.exports = {
   context: __dirname,
-  entry: "./frontend/root.js",
+  entry: "./frontend/entry.js",
   output: {
     path: "./",
     filename: "bundle.js"

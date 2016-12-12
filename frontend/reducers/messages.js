@@ -1,6 +1,9 @@
 import lodashGet from 'lodash/get';
 
 import {
+  ACTION_GET_MESSAGES_SUCCESS,
+  ACTION_GET_MESSAGES_ERROR,
+
   ACTION_ADD_MESSAGE_SUCCESS,
   ACTION_ADD_MESSAGE_ERROR,
 
@@ -38,7 +41,7 @@ export function extractAddMessageError(globalState) {
 }
 
 // reducer
-const reducer = (state = initialState, action) => {
+export function reducer(state = initialState, action) {
   switch(action.type) {
     case ACTION_GET_MESSAGES_SUCCESS: {
       const { messages } = action.payload;
@@ -80,5 +83,3 @@ const reducer = (state = initialState, action) => {
       return state;
   }
 }
-
-export default reducer;
