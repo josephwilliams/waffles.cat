@@ -1,10 +1,26 @@
-import { ADD_FRUIT, CLEAR } from "./actions";
+import {
+  ACTION_ADD_MESSAGE_SUCCESS,
+  ACTION_ADD_MESSAGE_ERROR,
 
-const _defaultState = {
+  ACTION_DELETE_MESSAGE_SUCCESS,
+  ACTION_DELETE_MESSAGE_ERROR,
+
+  ACTION_LIKE_MESSAGE_SUCCESS,
+  ACTION_LIKE_MESSAGE_ERROR,
+
+  ACTION_UNLIKE_MESSAGE_SUCCESS,
+  ACTION_UNLIKE_MESSAGE_ERROR,
+} from "../actions/messages";
+
+// NOTE 'REQUEST' actions are handled by the saga, which handles the
+// asynch requests via promises, resulting in and dispatching the
+// appropriate 'SUCCESS' OR 'ERROR' action.
+
+const defaultState = {
   messages: []
-}
+};
 
-const reducer = (oldState = _defaultState, action) => {
+const reducer = (oldState = defaultState, action) => {
   switch(action.type) {
     case ADD_FRUIT:
       return {
