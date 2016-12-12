@@ -2,16 +2,12 @@ import React from 'react';
 
 import Cat from './cat';
 
-export default class Splash extends React.Component {
-  constructor () {
-    super();
-  }
+const Splash = () => {
+  return (
+    <div className="splash-container">
+      <Cat />
+    </div>
+  );
+};
 
-  render () {
-    return (
-      <div className="splash-container">
-        <Cat />
-      </div>
-    );
-  }
-}
+export default Splash;
