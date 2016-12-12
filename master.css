@@ -40,3 +40,20 @@ html, body {
    font-size: 13px;
    font-family: 'Open Sans', sans-serif;
  }
+
+ .facebook-login-container {
+   width: 200px;
+   height: 40px;
+ }
+
+.facebook-login-container img {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.facebook-login-container img:active {
+  top: 1px;
+  left: 1px;
+}
