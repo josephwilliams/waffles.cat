@@ -6,13 +6,17 @@ import {
   // signOutUser,
 } from '../../api/firebase/auth';
 
-const FacebookLogin = () => {
+const FacebookLogin = ({ currentUser }) => {
   return (
-    <div
-      className="facebook-login-container"
-      onClick={() => authenticateUserByFacebook()}
-    >
-      <img src="http://www.yegara.com/am/sp/fbin.png" />
+    <div className="auth-wrapper">
+      {currentUser &&
+        <div
+          className="facebook-login-container"
+          onClick={() => authenticateUserByFacebook()}
+        >
+          <img src="http://www.yegara.com/am/sp/fbin.png" />
+        </div>
+      }
     </div>
   );
 };

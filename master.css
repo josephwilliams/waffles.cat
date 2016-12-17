@@ -2,6 +2,15 @@ html, body {
   background: #241e33;
 }
 
+#root {
+  display: flex;
+  justify-content: center;
+  color: #8c4141;
+  padding-top: 50px;
+  font-family: 'Unica One', cursive;
+  font-size: 30px;
+}
+
 .splash-container {
   margin-top: 50px;
   display: flex;

@@ -1,16 +1,34 @@
 import React from 'react';
 
+import {
+  getCurrentUser,
+  // signOutUser,
+} from '../../api/firebase/users';
+
 import Cat from './cat';
 import MessagesContainer from './messagesContainer';
 import LoginFacebook from './LoginFacebook';
 
-const Splash = () => {
-  return (
-    <div className="splash-container">
-      <Cat />
-      <LoginFacebook />
-    </div>
-  );
-};
+export default class Splash extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentUser: null,
+    };
+  }
 
-export default Splash;
+  componentDidMount() {
+    const currentUser = getCurrentUser();
+    this.setState({ currentUser: currentUser });
+  }
+
+  render() {
+    const { currentUser } = this.state;
+    return (
+      <div className="splash-container">
+        <Cat />
+        <LoginFacebook currentUser={currentUser} />
+      </div>
+    );
+  }
+}
