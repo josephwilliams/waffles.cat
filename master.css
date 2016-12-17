@@ -5,6 +5,8 @@ html, body {
 #root {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
   color: #8c4141;
   padding-top: 50px;
   font-family: 'Unica One', cursive;
