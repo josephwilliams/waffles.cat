@@ -27,7 +27,7 @@ export default class Splash extends Component {
     return (
       <div className="splash-container">
         <Cat />
-        <LoginFacebook currentUser={currentUser} />
+        {!currentUser && <LoginFacebook currentUser={currentUser} />}
       </div>
     );
   }

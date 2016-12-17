@@ -64,32 +64,19 @@
 	
 	var _splash2 = _interopRequireDefault(_splash);
 	
-	var _firebase = __webpack_require__(282);
-	
-	var _firebase2 = _interopRequireDefault(_firebase);
+	var _initialize = __webpack_require__(305);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// Initialize Firebase
-	
 	
 	// Components
 	
 	
 	// Redux
 	// React
-	var config = {
-	  apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
-	  authDomain: "waffles-87672.firebaseapp.com",
-	  databaseURL: "https://waffles-87672.firebaseio.com",
-	  storageBucket: "waffles-87672.appspot.com",
-	  messagingSenderId: "30011915731"
-	};
+	(0, _initialize.initializeFirebaseApp)();
 	
 	// Firebase
 	
-	
-	_firebase2.default.initializeApp(config);
 	
 	var App = function App() {
 	  return _react2.default.createElement(
@@ -25793,7 +25780,7 @@
 	        'div',
 	        { className: 'splash-container' },
 	        _react2.default.createElement(_cat2.default, null),
-	        _react2.default.createElement(_LoginFacebook2.default, { currentUser: currentUser })
+	        !currentUser && _react2.default.createElement(_LoginFacebook2.default, { currentUser: currentUser })
 	      );
 	    }
 	  }]);
@@ -45062,22 +45049,16 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var FacebookLogin = function FacebookLogin(_ref) {
-	  var currentUser = _ref.currentUser;
-	
+	var FacebookLogin = function FacebookLogin() {
 	  return _react2.default.createElement(
 	    'div',
-	    { className: 'auth-wrapper' },
-	    currentUser && _react2.default.createElement(
-	      'div',
-	      {
-	        className: 'facebook-login-container',
-	        onClick: function onClick() {
-	          return (0, _auth.authenticateUserByFacebook)();
-	        }
-	      },
-	      _react2.default.createElement('img', { src: 'http://www.yegara.com/am/sp/fbin.png' })
-	    )
+	    {
+	      className: 'facebook-login-container',
+	      onClick: function onClick() {
+	        return (0, _auth.authenticateUserByFacebook)();
+	      }
+	    },
+	    _react2.default.createElement('img', { src: 'http://www.yegara.com/am/sp/fbin.png' })
 	  );
 	};
 	
@@ -45132,6 +45113,49 @@
 	    return error;
 	    // An error happened.
 	  });
+	}
+
+/***/ },
+/* 305 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.initializeFirebaseApp = initializeFirebaseApp;
+	
+	var _app = __webpack_require__(283);
+	
+	var _app2 = _interopRequireDefault(_app);
+	
+	__webpack_require__(284);
+	
+	__webpack_require__(285);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// Initialize Firebase
+	var config = {
+	  apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
+	  authDomain: "waffles-87672.firebaseapp.com",
+	  databaseURL: "https://waffles-87672.firebaseio.com",
+	  storageBucket: "waffles-87672.appspot.com",
+	  messagingSenderId: "30011915731"
+	};
+	
+	function initializeFirebaseApp() {
+	  console.log('initalizing firebase app');
+	  _app2.default.initializeApp(config);
+	
+	  // new Promise(
+	  //   firebase.initializeApp(config);
+	  // ).then((app) => {
+	  //   console.log('good initalize', app);
+	  // }).catch((error) => {
+	  //   console.log('bad initalize', error);
+	  // });
 	}
 
 /***/ }
