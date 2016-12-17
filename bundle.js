@@ -64,19 +64,38 @@
 	
 	var _splash2 = _interopRequireDefault(_splash);
 	
-	var _initialize = __webpack_require__(305);
+	var _firebase = __webpack_require__(282);
+	
+	var firebase = _interopRequireWildcard(_firebase);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	// import { initializeFirebaseApp } from '../api/firebase/initialize';
+	//
+	// initializeFirebaseApp();
+	
+	// Initialize Firebase
+	
 	
 	// Components
 	
 	
 	// Redux
 	// React
-	(0, _initialize.initializeFirebaseApp)();
+	var config = {
+	  apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
+	  authDomain: "waffles-87672.firebaseapp.com",
+	  databaseURL: "https://waffles-87672.firebaseio.com",
+	  storageBucket: "waffles-87672.appspot.com",
+	  messagingSenderId: "30011915731"
+	};
 	
 	// Firebase
 	
+	
+	firebase.initializeApp(config);
 	
 	var App = function App() {
 	  return _react2.default.createElement(
@@ -25729,7 +25748,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _users = __webpack_require__(281);
+	__webpack_require__(281);
 	
 	var _cat = __webpack_require__(288);
 	
@@ -25768,8 +25787,8 @@
 	  _createClass(Splash, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var currentUser = (0, _users.getCurrentUser)();
-	      this.setState({ currentUser: currentUser });
+	      // const currentUser = getCurrentUser();
+	      // this.setState({ currentUser: currentUser });
 	    }
 	  }, {
 	    key: 'render',
@@ -45113,49 +45132,6 @@
 	    return error;
 	    // An error happened.
 	  });
-	}
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.initializeFirebaseApp = initializeFirebaseApp;
-	
-	var _app = __webpack_require__(283);
-	
-	var _app2 = _interopRequireDefault(_app);
-	
-	__webpack_require__(284);
-	
-	__webpack_require__(285);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// Initialize Firebase
-	var config = {
-	  apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
-	  authDomain: "waffles-87672.firebaseapp.com",
-	  databaseURL: "https://waffles-87672.firebaseio.com",
-	  storageBucket: "waffles-87672.appspot.com",
-	  messagingSenderId: "30011915731"
-	};
-	
-	function initializeFirebaseApp() {
-	  console.log('initalizing firebase app');
-	  _app2.default.initializeApp(config);
-	
-	  // new Promise(
-	  //   firebase.initializeApp(config);
-	  // ).then((app) => {
-	  //   console.log('good initalize', app);
-	  // }).catch((error) => {
-	  //   console.log('bad initalize', error);
-	  // });
 	}
 
 /***/ }

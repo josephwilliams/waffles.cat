@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {
-  getCurrentUser,
+  // getCurrentUser,
   // signOutUser,
 } from '../../api/firebase/users';
 
@@ -18,8 +18,8 @@ export default class Splash extends Component {
   }
 
   componentDidMount() {
-    const currentUser = getCurrentUser();
-    this.setState({ currentUser: currentUser });
+    // const currentUser = getCurrentUser();
+    // this.setState({ currentUser: currentUser });
   }
 
   render() {
