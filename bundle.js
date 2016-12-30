@@ -24973,13 +24973,9 @@
 	
 	var _users = __webpack_require__(259);
 	
-	var _catImageCSS = __webpack_require__(285);
+	var _catImageCSS = __webpack_require__(266);
 	
 	var _catImageCSS2 = _interopRequireDefault(_catImageCSS);
-	
-	var _messagesContainer = __webpack_require__(279);
-	
-	var _messagesContainer2 = _interopRequireDefault(_messagesContainer);
 	
 	var _loginFacebook = __webpack_require__(281);
 	
@@ -25012,8 +25008,8 @@
 	  }
 	
 	  _createClass(Splash, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
+	    key: 'componentWillMount',
+	    value: function componentWillMount() {
 	      var currentUser = (0, _users.getCurrentUser)();
 	      this.setState({ currentUser: currentUser });
 	    }
@@ -25733,7 +25729,81 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 266 */,
+/* 266 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _lodash = __webpack_require__(267);
+	
+	var _lodash2 = _interopRequireDefault(_lodash);
+	
+	var _reactTooltip = __webpack_require__(268);
+	
+	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var catSounds = ['meow', 'purr', 'hiss', 'hello'];
+	
+	var Cat = function Cat() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'cat-wrapper' },
+	    _react2.default.createElement(
+	      'div',
+	      {
+	        className: 'cat-container-circle',
+	        'data-tip': 'meow', 'data-event': 'click'
+	      },
+	      _react2.default.createElement(_reactTooltip2.default, { 'class': 'tooltip', getContent: function getContent() {
+	          return _lodash2.default.sample(catSounds);
+	        } }),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'cat-body' },
+	        _react2.default.createElement('div', { className: 'cat-ear left' }),
+	        _react2.default.createElement('div', { className: 'cat-ear right' }),
+	        _react2.default.createElement('div', { className: 'cat-ear-inside left' }),
+	        _react2.default.createElement('div', { className: 'cat-ear-inside right' }),
+	        _react2.default.createElement('div', { className: 'cat-eye left' }),
+	        _react2.default.createElement('div', { className: 'cat-eye right' }),
+	        _react2.default.createElement('div', { className: 'cat-mouth' })
+	      )
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'cat-text' },
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'text-waffles' },
+	        'waffles'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'text-the' },
+	        'the'
+	      ),
+	      _react2.default.createElement(
+	        'div',
+	        { className: 'text-cat' },
+	        'cat'
+	      )
+	    )
+	  );
+	};
+	
+	exports.default = Cat;
+
+/***/ },
 /* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -44093,93 +44163,8 @@
 	exports.default = '.__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}';
 
 /***/ },
-/* 279 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _message = __webpack_require__(280);
-	
-	var _message2 = _interopRequireDefault(_message);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var MessagesContainer = function MessagesContainer() {
-	
-	  // const user1 = { username: 'Joe' };
-	  var content1 = 'waffles is the coolest';
-	  var content2 = 'lorem ipsum long message that is very very very long to test the length of its container or whatever';
-	
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'messages-container' },
-	    _react2.default.createElement(_message2.default, { user: 'Rick', content: content1 }),
-	    _react2.default.createElement(_message2.default, { user: 'Morty', content: content2 })
-	  );
-	};
-	
-	exports.default = MessagesContainer;
-
-/***/ },
-/* 280 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var Message = function Message(_ref) {
-	  var user = _ref.user,
-	      content = _ref.content;
-	
-	  return _react2.default.createElement(
-	    "div",
-	    { className: "message-wrapper" },
-	    _react2.default.createElement(
-	      "div",
-	      { className: "message-container" },
-	      _react2.default.createElement(
-	        "div",
-	        { className: "message-user-image" },
-	        _react2.default.createElement("img", { src: '/lolcat.png' })
-	      ),
-	      _react2.default.createElement(
-	        "div",
-	        { className: "message-content" },
-	        _react2.default.createElement(
-	          "div",
-	          { className: "message-username" },
-	          user
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          { className: "message-text" },
-	          content
-	        )
-	      )
-	    )
-	  );
-	};
-	
-	exports.default = Message;
-
-/***/ },
+/* 279 */,
+/* 280 */,
 /* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -44247,17 +44232,15 @@
 	    // The signed-in user info.
 	    var user = result.user;
 	    console.log('SIGN IN SUCCESS', user);
-	  }).then(function (user) {
+	
 	    var uid = user.uid,
 	        displayName = user.displayName,
 	        email = user.email,
 	        photoURL = user.photoURL;
 	
-	    console.log('fb auth success, next step begun', user);
-	
 	    // add user data to /users (stored separate in firebase than auth)
+	
 	    writeUserData(uid, displayName, email, photoURL);
-	    console.log('user data written');
 	  }).catch(function (error) {
 	    console.log('SIGN IN ERROR', error);
 	    // Handle Errors here.
@@ -44349,81 +44332,6 @@
 	  console.log('initalizing firebase app');
 	  firebase.initializeApp(config);
 	}
-
-/***/ },
-/* 285 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _lodash = __webpack_require__(267);
-	
-	var _lodash2 = _interopRequireDefault(_lodash);
-	
-	var _reactTooltip = __webpack_require__(268);
-	
-	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	var catSounds = ['meow', 'purr', 'hiss', 'hello'];
-	
-	var Cat = function Cat() {
-	  return _react2.default.createElement(
-	    'div',
-	    { className: 'cat-wrapper' },
-	    _react2.default.createElement(
-	      'div',
-	      {
-	        className: 'cat-container-circle',
-	        'data-tip': 'meow', 'data-event': 'click'
-	      },
-	      _react2.default.createElement(_reactTooltip2.default, { 'class': 'tooltip', getContent: function getContent() {
-	          return _lodash2.default.sample(catSounds);
-	        } }),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'cat-body' },
-	        _react2.default.createElement('div', { className: 'cat-ear left' }),
-	        _react2.default.createElement('div', { className: 'cat-ear right' }),
-	        _react2.default.createElement('div', { className: 'cat-ear-inside left' }),
-	        _react2.default.createElement('div', { className: 'cat-ear-inside right' }),
-	        _react2.default.createElement('div', { className: 'cat-eye left' }),
-	        _react2.default.createElement('div', { className: 'cat-eye right' }),
-	        _react2.default.createElement('div', { className: 'cat-mouth' })
-	      )
-	    ),
-	    _react2.default.createElement(
-	      'div',
-	      { className: 'cat-text' },
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'text-waffles' },
-	        'waffles'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'text-the' },
-	        'the'
-	      ),
-	      _react2.default.createElement(
-	        'div',
-	        { className: 'text-cat' },
-	        'cat'
-	      )
-	    )
-	  );
-	};
-	
-	exports.default = Cat;
 
 /***/ }
 /******/ ]);

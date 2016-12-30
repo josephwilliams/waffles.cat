@@ -18,14 +18,11 @@ export function authenticateUserByFacebook() {
     // The signed-in user info.
     var user = result.user;
     console.log('SIGN IN SUCCESS', user);
-  })
-  .then(function(user) {
+
     const { uid, displayName, email, photoURL } = user;
-    console.log('fb auth success, next step begun', user);
-    
+
     // add user data to /users (stored separate in firebase than auth)
     writeUserData(uid, displayName, email, photoURL);
-    console.log('user data written');
   })
   .catch(function(error) {
     console.log('SIGN IN ERROR', error);

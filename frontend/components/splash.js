@@ -4,8 +4,7 @@ import {
   getCurrentUser,
 } from '../../api/firebase/users';
 
-import Cat from './catImageCSS';
-import MessagesContainer from './messagesContainer';
+import CatImage from './catImageCSS';
 import LoginFacebook from './loginFacebook';
 import SignOutButton from './SignOutButton';
 
@@ -17,17 +16,17 @@ export default class Splash extends Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const currentUser = getCurrentUser();
     this.setState({ currentUser: currentUser });
   }
 
   render() {
     const { currentUser } = this.state;
-    
+
     return (
       <div className="splash-container">
-        <Cat />
+        <CatImage />
         {!currentUser ?
           <LoginFacebook currentUser={currentUser} />
           :
