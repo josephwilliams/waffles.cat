@@ -29,13 +29,15 @@ export default class UsersContainer extends Component {
   }
 
   render() {
+    const { users } = this.state;
+
     return (
-      <div className="users-container" onMouseExit={()=>this.displayNoName()}>
+      <div className="users-container" onMouseLeave={()=>this.displayNoName()}>
         {!!users &&
           users.map((user, idx) => {
             const { name, profile_picture_url } = user;
             return (
-              <div onMouseOver={()=>this.hoverOverUser(name)}
+              <div onMouseOver={()=>this.hoverOverUser(name)}>
                 <UserObject
                   name={name}
                   imageUrl={profile_picture_url}

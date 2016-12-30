@@ -24981,7 +24981,7 @@
 	
 	var _authUI2 = _interopRequireDefault(_authUI);
 	
-	var _usersContainer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./usersContainer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _usersContainer = __webpack_require__(288);
 	
 	var _usersContainer2 = _interopRequireDefault(_usersContainer);
 	
@@ -44409,6 +44409,138 @@
 	}(_react.Component);
 	
 	exports.default = Splash;
+
+/***/ },
+/* 287 */,
+/* 288 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _firebase = __webpack_require__(260);
+	
+	var _firebase2 = _interopRequireDefault(_firebase);
+	
+	var _userObject = __webpack_require__(289);
+	
+	var _userObject2 = _interopRequireDefault(_userObject);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var UsersContainer = function (_Component) {
+	  _inherits(UsersContainer, _Component);
+	
+	  function UsersContainer(props) {
+	    _classCallCheck(this, UsersContainer);
+	
+	    var _this = _possibleConstructorReturn(this, (UsersContainer.__proto__ || Object.getPrototypeOf(UsersContainer)).call(this, props));
+	
+	    _this.state = {
+	      users: null,
+	      hoveredOverUser: ''
+	    };
+	    return _this;
+	  }
+	
+	  _createClass(UsersContainer, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var that = this;
+	      return _firebase2.default.database().ref('/users').once('value').then(function (snapshot) {
+	        var users = snapshot.val();
+	        console.log('all users', users);
+	      });
+	    }
+	  }, {
+	    key: 'displayUserName',
+	    value: function displayUserName(name) {
+	      this.setState({ hoveredOverUser: name });
+	    }
+	  }, {
+	    key: 'displayNoName',
+	    value: function displayNoName() {
+	      this.setState({ hoveredOverUser: '' });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var _this2 = this;
+	
+	      var users = this.state.users;
+	
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'users-container', onMouseLeave: function onMouseLeave() {
+	            return _this2.displayNoName();
+	          } },
+	        !!users && users.map(function (user, idx) {
+	          var name = user.name,
+	              profile_picture_url = user.profile_picture_url;
+	
+	          return _react2.default.createElement(
+	            'div',
+	            { onMouseOver: function onMouseOver() {
+	                return _this2.hoverOverUser(name);
+	              } },
+	            _react2.default.createElement(_userObject2.default, {
+	              name: name,
+	              imageUrl: profile_picture_url
+	            })
+	          );
+	        })
+	      );
+	    }
+	  }]);
+	
+	  return UsersContainer;
+	}(_react.Component);
+	
+	exports.default = UsersContainer;
+
+/***/ },
+/* 289 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	var UserObject = function UserObject(_ref) {
+	  var name = _ref.name,
+	      imageUrl = _ref.imageUrl;
+	  return _react2.default.createElement(
+	    "div",
+	    { className: "user-object-container" },
+	    _react2.default.createElement("img", { src: imageUrl })
+	  );
+	};
+	
+	exports.default = UserObject;
 
 /***/ }
 /******/ ]);
