@@ -8,9 +8,15 @@ const Cat = () => (
   <div className="cat-wrapper">
     <div
       className="cat-container-circle"
-      data-tip="meow" data-event='click'
+      data-event='click'
+      data-for='getContent'
+      data-tip
     >
-    <ReactTooltip class="tooltip" getContent={() => _.sample(catSounds)} />
+    <ReactTooltip
+      id="getContent"
+      className="tooltip"
+      getContent={() => _.sample(catSounds)}
+    />
       <div className="cat-body">
         <div className="cat-ear left" />
         <div className="cat-ear right" />

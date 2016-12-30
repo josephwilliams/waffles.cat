@@ -25770,11 +25770,17 @@
 	      'div',
 	      {
 	        className: 'cat-container-circle',
-	        'data-tip': 'meow', 'data-event': 'click'
+	        'data-event': 'click',
+	        'data-for': 'getContent',
+	        'data-tip': true
 	      },
-	      _react2.default.createElement(_reactTooltip2.default, { 'class': 'tooltip', getContent: function getContent() {
+	      _react2.default.createElement(_reactTooltip2.default, {
+	        id: 'getContent',
+	        className: 'tooltip',
+	        getContent: function getContent() {
 	          return _lodash2.default.sample(catSounds);
-	        } }),
+	        }
+	      }),
 	      _react2.default.createElement(
 	        'div',
 	        { className: 'cat-body' },
