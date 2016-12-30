@@ -44431,6 +44431,10 @@
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
+	var _lodash = __webpack_require__(267);
+	
+	var _lodash2 = _interopRequireDefault(_lodash);
+	
 	var _userObject = __webpack_require__(289);
 	
 	var _userObject2 = _interopRequireDefault(_userObject);
@@ -44464,7 +44468,15 @@
 	      var that = this;
 	      return _firebase2.default.database().ref('/users').once('value').then(function (snapshot) {
 	        var users = snapshot.val();
-	        console.log('all users', users);
+	
+	        console.log('ALL USERS', users);
+	
+	        var usersArr = [];
+	        _lodash2.default.forOwn(users, function (user, key) {
+	          usersArr.push(user);
+	        });
+	
+	        that.setState({ users: usersArr });
 	      });
 	    }
 	  }, {
@@ -44482,29 +44494,41 @@
 	    value: function render() {
 	      var _this2 = this;
 	
-	      var users = this.state.users;
+	      var _state = this.state,
+	          users = _state.users,
+	          hoveredOverUser = _state.hoveredOverUser;
 	
 	
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'users-container', onMouseLeave: function onMouseLeave() {
-	            return _this2.displayNoName();
-	          } },
-	        !!users && users.map(function (user, idx) {
-	          var name = user.name,
-	              profile_picture_url = user.profile_picture_url;
+	        { className: 'users-wrapper' },
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'users-container', onMouseLeave: function onMouseLeave() {
+	              return _this2.displayNoName();
+	            } },
+	          !!users && users.map(function (user, idx) {
+	            var name = user.name,
+	                profile_picture_url = user.profile_picture_url;
 	
-	          return _react2.default.createElement(
-	            'div',
-	            { onMouseOver: function onMouseOver() {
-	                return _this2.hoverOverUser(name);
-	              } },
-	            _react2.default.createElement(_userObject2.default, {
-	              name: name,
-	              imageUrl: profile_picture_url
-	            })
-	          );
-	        })
+	            console.log('user', name, profile_picture_url);
+	            return _react2.default.createElement(
+	              'div',
+	              { onMouseOver: function onMouseOver() {
+	                  return _this2.hoverOverUser(name);
+	                }, key: idx },
+	              _react2.default.createElement(_userObject2.default, {
+	                name: name,
+	                imageUrl: profile_picture_url
+	              })
+	            );
+	          })
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'hovered-user-display' },
+	          hoveredOverUser
+	        )
 	      );
 	    }
 	  }]);

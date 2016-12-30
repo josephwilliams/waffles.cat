@@ -91,11 +91,13 @@ html, body {
 
 .users-container {
   max-width: 300px;
+  min-height: 100px;
 }
 
 .user-object-container {
   width: 60px;
   height: 60px;
+  border: 1px solid white;
 }
 
 .user-object-container img {
@@ -103,4 +105,10 @@ html, body {
   height: 60px;
   border-radius: 50%;
   border: 2px solid grey;
+}
+
+.hovered-user-display {
+  color: white;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 13px;
 }
