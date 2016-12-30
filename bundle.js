@@ -25776,7 +25776,7 @@
 	      },
 	      _react2.default.createElement(_reactTooltip2.default, {
 	        id: 'getContent',
-	        className: 'tooltip',
+	        'class': 'tooltip',
 	        getContent: function getContent() {
 	          return _lodash2.default.sample(catSounds);
 	        }

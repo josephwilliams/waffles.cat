@@ -14,7 +14,7 @@ const Cat = () => (
     >
     <ReactTooltip
       id="getContent"
-      className="tooltip"
+      class="tooltip"
       getContent={() => _.sample(catSounds)}
     />
       <div className="cat-body">
