@@ -88,3 +88,19 @@ html, body {
 
 .signout-button-wrapper {
 }
+
+.users-container {
+  max-width: 300px;
+}
+
+.user-object-container {
+  width: 60px;
+  height: 60px;
+}
+
+.user-object-container img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: 2px solid grey;
+}

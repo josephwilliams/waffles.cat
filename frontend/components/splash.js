@@ -6,6 +6,7 @@ import {
 
 import CatImage from './catImageCSS';
 import AuthUI from './authUI';
+import UsersContainer from './usersContainer';
 
 export default class Splash extends Component {
   constructor() {
@@ -16,8 +17,13 @@ export default class Splash extends Component {
   render() {
     return (
       <div className="splash-container">
-        <CatImage />
-        <AuthUI />
+        <div className="splash-container-cat">
+          <CatImage />
+        </div>
+        <div className="splash-container-content">
+          <AuthUI />
+          <UsersContainer />
+        </div>
       </div>
     );
   }

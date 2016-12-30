@@ -24981,6 +24981,10 @@
 	
 	var _authUI2 = _interopRequireDefault(_authUI);
 	
+	var _usersContainer = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./usersContainer\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	
+	var _usersContainer2 = _interopRequireDefault(_usersContainer);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -25007,8 +25011,17 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'splash-container' },
-	        _react2.default.createElement(_catImageCSS2.default, null),
-	        _react2.default.createElement(_authUI2.default, null)
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'splash-container-cat' },
+	          _react2.default.createElement(_catImageCSS2.default, null)
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'splash-container-content' },
+	          _react2.default.createElement(_authUI2.default, null),
+	          _react2.default.createElement(_usersContainer2.default, null)
+	        )
 	      );
 	    }
 	  }]);
