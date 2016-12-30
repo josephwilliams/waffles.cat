@@ -25008,9 +25008,9 @@
 	  }
 	
 	  _createClass(Splash, [{
-	    key: 'componentWillMount',
-	    value: function componentWillMount() {
-	      var currentUser = (0, _users.getCurrentUser)();
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var currentUser = (0, _users.getCurrentUserBasic)();
 	      this.setState({ currentUser: currentUser });
 	    }
 	  }, {
@@ -25018,12 +25018,13 @@
 	    value: function render() {
 	      var currentUser = this.state.currentUser;
 	
+	      console.log('RENDER current user check', currentUser);
 	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'splash-container' },
 	        _react2.default.createElement(_catImageCSS2.default, null),
-	        !currentUser ? _react2.default.createElement(_loginFacebook2.default, { currentUser: currentUser }) : _react2.default.createElement(_SignOutButton2.default, null)
+	        !currentUser ? _react2.default.createElement(_loginFacebook2.default, null) : _react2.default.createElement(_SignOutButton2.default, null)
 	      );
 	    }
 	  }]);
@@ -25043,6 +25044,7 @@
 	  value: true
 	});
 	exports.getAllUsers = getAllUsers;
+	exports.getCurrentUserBasic = getCurrentUserBasic;
 	exports.getCurrentUser = getCurrentUser;
 	
 	var _firebase = __webpack_require__(260);
@@ -25051,7 +25053,16 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function getAllUsers() {}
+	function getAllUsers() {
+	  return _firebase2.default.database().ref('/users').once('value').then(function (snapshot) {
+	    var users = snapshot.val();
+	    console.log('all users', users);
+	  });
+	}
+	
+	function getCurrentUserBasic() {
+	  return _firebase2.default.auth().currentUser;
+	}
 	
 	function getCurrentUser() {
 	  _firebase2.default.auth().onAuthStateChanged(function (user) {

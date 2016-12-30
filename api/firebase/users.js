@@ -1,7 +1,15 @@
 import firebase, { auth, database } from 'firebase';
 
-export function getAllUsers() {
 
+export function getAllUsers() {
+  return firebase.database().ref('/users').once('value').then(function(snapshot) {
+    var users = snapshot.val();
+    console.log('all users', users);
+  });
+}
+
+export function getCurrentUserBasic() {
+  return firebase.auth().currentUser;
 }
 
 export function getCurrentUser() {
