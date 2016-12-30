@@ -4,20 +4,30 @@ function writeUserData(userId, name, email, imageUrl) {
   firebase.database().ref('users/' + userId).set({
     name: name,
     email: email,
-    profile_picture : imageUrl
+    profile_picture_url: imageUrl,
   });
 }
 
 export function authenticateUserByFacebook() {
   const provider = new firebase.auth.FacebookAuthProvider();
 
-  firebase.auth().signInWithPopup(provider).then(function(result) {
+  firebase.auth().signInWithPopup(provider)
+  .then(function(result) {
     // This gives you a Facebook Access Token. You can use it to access the Facebook API.
     var token = result.credential.accessToken;
     // The signed-in user info.
     var user = result.user;
     console.log('SIGN IN SUCCESS', user);
-  }).catch(function(error) {
+  })
+  .then(function(user) {
+    const { uid, displayName, email, photoURL } = user;
+    console.log('fb auth success, next step begun', user);
+    
+    // add user data to /users (stored separate in firebase than auth)
+    writeUserData(uid, displayName, email, photoURL);
+    console.log('user data written');
+  })
+  .catch(function(error) {
     console.log('SIGN IN ERROR', error);
     // Handle Errors here.
     var errorCode = error.code;

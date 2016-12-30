@@ -1,6 +1,5 @@
-import firebase, { auth, database } from 'firebase';
+import * as firebase from 'firebase';
 
-// Initialize Firebase
 const config = {
   apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
   authDomain: "waffles-87672.firebaseapp.com",
@@ -9,15 +8,8 @@ const config = {
   messagingSenderId: "30011915731",
 };
 
+// Initialize Firebase
 export function initializeFirebaseApp() {
   console.log('initalizing firebase app');
   firebase.initializeApp(config);
-
-  // new Promise(
-  //   firebase.initializeApp(config);
-  // ).then((app) => {
-  //   console.log('good initalize', app);
-  // }).catch((error) => {
-  //   console.log('bad initalize', error);
-  // });
 }

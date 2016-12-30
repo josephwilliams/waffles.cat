@@ -10,19 +10,10 @@ import store from './store';
 import Splash from './components/splash';
 
 // Firebase
-import * as firebase from 'firebase';
+import { initializeFirebaseApp } from '../api/firebase/initialize';
 
-
-// Initialize Firebase
-const config = {
-  apiKey: "AIzaSyAKj4YbpLyig2QOb0qFIZRV8gHLRD2I8_g",
-  authDomain: "waffles-87672.firebaseapp.com",
-  databaseURL: "https://waffles-87672.firebaseio.com",
-  storageBucket: "waffles-87672.appspot.com",
-  messagingSenderId: "30011915731",
-};
-
-firebase.initializeApp(config);
+// initalize Firebase app
+initializeFirebaseApp();
 
 const App = () => (
   <Provider store={store}>
