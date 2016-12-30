@@ -19,6 +19,21 @@ export default class Splash extends Component {
     this.signOutUser = this.signOutUser.bind(this);
   }
 
+  getCurrentUser() {
+    const that = this;
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        console.log('>> auth.js CURRENT USER', user);
+        that.setState({ currentUser: user });
+      } else {
+        // No user is signed in.
+        console.log('>> auth.js NO CURRENT USER');
+        return null;
+      }
+    });
+  }
+
   authenticateUserByFacebook() {
     const that = this;
 
@@ -65,8 +80,7 @@ export default class Splash extends Component {
   }
 
   componentDidMount() {
-    const currentUser = getCurrentUserBasic();
-    this.setState({ currentUser: currentUser });
+    this.getCurrentUser();
   }
 
   render() {

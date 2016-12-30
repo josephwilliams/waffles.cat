@@ -44337,6 +44337,22 @@
 	  }
 	
 	  _createClass(Splash, [{
+	    key: 'getCurrentUser',
+	    value: function getCurrentUser() {
+	      var that = this;
+	      _firebase2.default.auth().onAuthStateChanged(function (user) {
+	        if (user) {
+	          // User is signed in.
+	          console.log('>> auth.js CURRENT USER', user);
+	          that.setState({ currentUser: user });
+	        } else {
+	          // No user is signed in.
+	          console.log('>> auth.js NO CURRENT USER');
+	          return null;
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'authenticateUserByFacebook',
 	    value: function authenticateUserByFacebook() {
 	      var that = this;
@@ -44388,8 +44404,7 @@
 	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      var currentUser = (0, _users.getCurrentUserBasic)();
-	      this.setState({ currentUser: currentUser });
+	      this.getCurrentUser();
 	    }
 	  }, {
 	    key: 'render',
