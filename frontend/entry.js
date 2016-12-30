@@ -12,9 +12,6 @@ import Splash from './components/splash';
 // Firebase
 import * as firebase from 'firebase';
 
-// import { initializeFirebaseApp } from '../api/firebase/initialize';
-//
-// initializeFirebaseApp();
 
 // Initialize Firebase
 const config = {

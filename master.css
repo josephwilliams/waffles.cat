@@ -68,3 +68,20 @@ html, body {
   top: 1px;
   left: 1px;
 }
+
+.signout-button {
+  border: 1px solid #8c4141;
+  padding: 3px 8px;
+  font-size: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+
+.signout-button:hover {
+  background: rgba(114, 79, 177, 0.18);
+  transition: background 0.1s ease;
+}
+
+.signout-button-wrapper {
+}

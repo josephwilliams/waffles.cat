@@ -64,17 +64,13 @@
 	
 	var _splash2 = _interopRequireDefault(_splash);
 	
-	var _firebase = __webpack_require__(275);
+	var _firebase = __webpack_require__(277);
 	
 	var firebase = _interopRequireWildcard(_firebase);
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	// import { initializeFirebaseApp } from '../api/firebase/initialize';
-	//
-	// initializeFirebaseApp();
 	
 	// Initialize Firebase
 	
@@ -24987,19 +24983,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	__webpack_require__(282);
+	var _users = __webpack_require__(259);
 	
-	var _cat = __webpack_require__(259);
+	var _cat = __webpack_require__(260);
 	
 	var _cat2 = _interopRequireDefault(_cat);
 	
-	var _messagesContainer = __webpack_require__(272);
+	var _messagesContainer = __webpack_require__(273);
 	
 	var _messagesContainer2 = _interopRequireDefault(_messagesContainer);
 	
-	var _LoginFacebook = __webpack_require__(274);
+	var _loginFacebook = __webpack_require__(283);
 	
-	var _LoginFacebook2 = _interopRequireDefault(_LoginFacebook);
+	var _loginFacebook2 = _interopRequireDefault(_loginFacebook);
+	
+	var _SignOutButton = __webpack_require__(284);
+	
+	var _SignOutButton2 = _interopRequireDefault(_SignOutButton);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25026,8 +25026,8 @@
 	  _createClass(Splash, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      // const currentUser = getCurrentUser();
-	      // this.setState({ currentUser: currentUser });
+	      var currentUser = (0, _users.getCurrentUser)();
+	      this.setState({ currentUser: currentUser });
 	    }
 	  }, {
 	    key: 'render',
@@ -25038,13 +25038,13 @@
 	        'div',
 	        { className: 'splash-container' },
 	        _react2.default.createElement(_cat2.default, null),
-	        !currentUser && _react2.default.createElement(_LoginFacebook2.default, { currentUser: currentUser })
+	        currentUser ? _react2.default.createElement(_loginFacebook2.default, { currentUser: currentUser }) : _react2.default.createElement(_SignOutButton2.default, null)
 	      );
 	    }
 	  }]);
 	
 	  return Splash;
-	}(Component);
+	}(_react.Component);
 	
 	exports.default = Splash;
 
@@ -25057,16 +25057,50 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.getAllUsers = getAllUsers;
+	exports.getCurrentUser = getCurrentUser;
+	
+	var _firebase = __webpack_require__(277);
+	
+	var _firebase2 = _interopRequireDefault(_firebase);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function getAllUsers() {}
+	
+	function getCurrentUser() {
+	  _firebase2.default.auth().onAuthStateChanged(function (user) {
+	    if (user) {
+	      // User is signed in.
+	      console.log('CURRENT USER', user);
+	      return user;
+	    } else {
+	      // No user is signed in.
+	      console.log('NO CURRENT USER');
+	      return null;
+	    }
+	  });
+	}
+
+/***/ },
+/* 260 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
 	
 	var _react = __webpack_require__(1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _lodash = __webpack_require__(260);
+	var _lodash = __webpack_require__(261);
 	
 	var _lodash2 = _interopRequireDefault(_lodash);
 	
-	var _reactTooltip = __webpack_require__(261);
+	var _reactTooltip = __webpack_require__(262);
 	
 	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
 	
@@ -25124,7 +25158,7 @@
 	exports.default = Cat;
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global, module) {/**
@@ -42196,7 +42230,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }()), __webpack_require__(199)(module)))
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42224,37 +42258,37 @@
 	
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 	
-	var _classnames = __webpack_require__(262);
+	var _classnames = __webpack_require__(263);
 	
 	var _classnames2 = _interopRequireDefault(_classnames);
 	
-	var _staticMethods = __webpack_require__(263);
+	var _staticMethods = __webpack_require__(264);
 	
 	var _staticMethods2 = _interopRequireDefault(_staticMethods);
 	
-	var _windowListener = __webpack_require__(265);
+	var _windowListener = __webpack_require__(266);
 	
 	var _windowListener2 = _interopRequireDefault(_windowListener);
 	
-	var _customEvent = __webpack_require__(266);
+	var _customEvent = __webpack_require__(267);
 	
 	var _customEvent2 = _interopRequireDefault(_customEvent);
 	
-	var _isCapture = __webpack_require__(267);
+	var _isCapture = __webpack_require__(268);
 	
 	var _isCapture2 = _interopRequireDefault(_isCapture);
 	
-	var _getPosition = __webpack_require__(268);
+	var _getPosition = __webpack_require__(269);
 	
 	var _getPosition2 = _interopRequireDefault(_getPosition);
 	
-	var _getTipContent = __webpack_require__(269);
+	var _getTipContent = __webpack_require__(270);
 	
 	var _getTipContent2 = _interopRequireDefault(_getTipContent);
 	
-	var _aria = __webpack_require__(270);
+	var _aria = __webpack_require__(271);
 	
-	var _style = __webpack_require__(271);
+	var _style = __webpack_require__(272);
 	
 	var _style2 = _interopRequireDefault(_style);
 	
@@ -42770,7 +42804,7 @@
 	module.exports = ReactTooltip;
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -42824,7 +42858,7 @@
 
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42882,7 +42916,7 @@
 	  };
 	};
 	
-	var _constant = __webpack_require__(264);
+	var _constant = __webpack_require__(265);
 	
 	var _constant2 = _interopRequireDefault(_constant);
 	
@@ -42907,7 +42941,7 @@
 	    */
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42925,7 +42959,7 @@
 	};
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42971,14 +43005,14 @@
 	  };
 	};
 	
-	var _constant = __webpack_require__(264);
+	var _constant = __webpack_require__(265);
 	
 	var _constant2 = _interopRequireDefault(_constant);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43071,7 +43105,7 @@
 	var customListener = void 0;
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43088,7 +43122,7 @@
 	};
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43406,7 +43440,7 @@
 	};
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43443,7 +43477,7 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -43472,7 +43506,7 @@
 	}
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43483,7 +43517,7 @@
 	exports.default = '.__react_component_tooltip{border-radius:3px;display:inline-block;font-size:13px;left:-999em;opacity:0;padding:8px 21px;position:fixed;pointer-events:none;transition:opacity 0.3s ease-out;top:-999em;visibility:hidden;z-index:999}.__react_component_tooltip:before,.__react_component_tooltip:after{content:"";width:0;height:0;position:absolute}.__react_component_tooltip.show{opacity:0.9;margin-top:0px;margin-left:0px;visibility:visible}.__react_component_tooltip.type-dark{color:#fff;background-color:#222}.__react_component_tooltip.type-dark.place-top:after{border-top-color:#222;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-dark.place-bottom:after{border-bottom-color:#222;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-dark.place-left:after{border-left-color:#222;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-dark.place-right:after{border-right-color:#222;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-dark.border{border:1px solid #fff}.__react_component_tooltip.type-dark.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-dark.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-dark.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-dark.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-success{color:#fff;background-color:#8DC572}.__react_component_tooltip.type-success.place-top:after{border-top-color:#8DC572;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-success.place-bottom:after{border-bottom-color:#8DC572;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-success.place-left:after{border-left-color:#8DC572;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-success.place-right:after{border-right-color:#8DC572;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-success.border{border:1px solid #fff}.__react_component_tooltip.type-success.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-success.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-success.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-success.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-warning{color:#fff;background-color:#F0AD4E}.__react_component_tooltip.type-warning.place-top:after{border-top-color:#F0AD4E;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-warning.place-bottom:after{border-bottom-color:#F0AD4E;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-warning.place-left:after{border-left-color:#F0AD4E;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-warning.place-right:after{border-right-color:#F0AD4E;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-warning.border{border:1px solid #fff}.__react_component_tooltip.type-warning.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-warning.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-warning.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-warning.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-error{color:#fff;background-color:#BE6464}.__react_component_tooltip.type-error.place-top:after{border-top-color:#BE6464;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-error.place-bottom:after{border-bottom-color:#BE6464;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-error.place-left:after{border-left-color:#BE6464;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-error.place-right:after{border-right-color:#BE6464;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-error.border{border:1px solid #fff}.__react_component_tooltip.type-error.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-error.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-error.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-error.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-info{color:#fff;background-color:#337AB7}.__react_component_tooltip.type-info.place-top:after{border-top-color:#337AB7;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-info.place-bottom:after{border-bottom-color:#337AB7;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-info.place-left:after{border-left-color:#337AB7;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-info.place-right:after{border-right-color:#337AB7;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-info.border{border:1px solid #fff}.__react_component_tooltip.type-info.border.place-top:before{border-top:8px solid #fff}.__react_component_tooltip.type-info.border.place-bottom:before{border-bottom:8px solid #fff}.__react_component_tooltip.type-info.border.place-left:before{border-left:8px solid #fff}.__react_component_tooltip.type-info.border.place-right:before{border-right:8px solid #fff}.__react_component_tooltip.type-light{color:#222;background-color:#fff}.__react_component_tooltip.type-light.place-top:after{border-top-color:#fff;border-top-style:solid;border-top-width:6px}.__react_component_tooltip.type-light.place-bottom:after{border-bottom-color:#fff;border-bottom-style:solid;border-bottom-width:6px}.__react_component_tooltip.type-light.place-left:after{border-left-color:#fff;border-left-style:solid;border-left-width:6px}.__react_component_tooltip.type-light.place-right:after{border-right-color:#fff;border-right-style:solid;border-right-width:6px}.__react_component_tooltip.type-light.border{border:1px solid #222}.__react_component_tooltip.type-light.border.place-top:before{border-top:8px solid #222}.__react_component_tooltip.type-light.border.place-bottom:before{border-bottom:8px solid #222}.__react_component_tooltip.type-light.border.place-left:before{border-left:8px solid #222}.__react_component_tooltip.type-light.border.place-right:before{border-right:8px solid #222}.__react_component_tooltip.place-top{margin-top:-10px}.__react_component_tooltip.place-top:before{border-left:10px solid transparent;border-right:10px solid transparent;bottom:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-top:after{border-left:8px solid transparent;border-right:8px solid transparent;bottom:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-bottom{margin-top:10px}.__react_component_tooltip.place-bottom:before{border-left:10px solid transparent;border-right:10px solid transparent;top:-8px;left:50%;margin-left:-10px}.__react_component_tooltip.place-bottom:after{border-left:8px solid transparent;border-right:8px solid transparent;top:-6px;left:50%;margin-left:-8px}.__react_component_tooltip.place-left{margin-left:-10px}.__react_component_tooltip.place-left:before{border-top:6px solid transparent;border-bottom:6px solid transparent;right:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-left:after{border-top:5px solid transparent;border-bottom:5px solid transparent;right:-6px;top:50%;margin-top:-4px}.__react_component_tooltip.place-right{margin-left:10px}.__react_component_tooltip.place-right:before{border-top:6px solid transparent;border-bottom:6px solid transparent;left:-8px;top:50%;margin-top:-5px}.__react_component_tooltip.place-right:after{border-top:5px solid transparent;border-bottom:5px solid transparent;left:-6px;top:50%;margin-top:-4px}.__react_component_tooltip .multi-line{display:block;padding:2px 0px;text-align:center}';
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43496,7 +43530,7 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _message = __webpack_require__(273);
+	var _message = __webpack_require__(274);
 	
 	var _message2 = _interopRequireDefault(_message);
 	
@@ -43519,7 +43553,7 @@
 	exports.default = MessagesContainer;
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -43570,7 +43604,8 @@
 	exports.default = Message;
 
 /***/ },
-/* 274 */
+/* 275 */,
+/* 276 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43578,36 +43613,58 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
+	exports.authenticateUserByFacebook = authenticateUserByFacebook;
+	exports.signOutUser = signOutUser;
 	
-	var _react = __webpack_require__(1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _firebase = __webpack_require__(275);
+	var _firebase = __webpack_require__(277);
 	
 	var _firebase2 = _interopRequireDefault(_firebase);
 	
-	var _auth = __webpack_require__(281);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var FacebookLogin = function FacebookLogin() {
-	  return _react2.default.createElement(
-	    'div',
-	    {
-	      className: 'facebook-login-container',
-	      onClick: function onClick() {
-	        return (0, _auth.authenticateUserByFacebook)();
-	      }
-	    },
-	    _react2.default.createElement('img', { src: 'http://www.yegara.com/am/sp/fbin.png' })
-	  );
-	};
+	function writeUserData(userId, name, email, imageUrl) {
+	  _firebase2.default.database().ref('users/' + userId).set({
+	    name: name,
+	    email: email,
+	    profile_picture: imageUrl
+	  });
+	}
 	
-	exports.default = FacebookLogin;
+	function authenticateUserByFacebook() {
+	  var provider = new _firebase2.default.auth.FacebookAuthProvider();
+	
+	  _firebase2.default.auth().signInWithPopup(provider).then(function (result) {
+	    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	    var token = result.credential.accessToken;
+	    // The signed-in user info.
+	    var user = result.user;
+	    console.log('SIGN IN SUCCESS', user);
+	  }).catch(function (error) {
+	    console.log('SIGN IN ERROR', error);
+	    // Handle Errors here.
+	    var errorCode = error.code;
+	    var errorMessage = error.message;
+	    // The email of the user's account used.
+	    var email = error.email;
+	    // The firebase.auth.AuthCredential type that was used.
+	    var credential = error.credential;
+	    // ...
+	  });
+	}
+	
+	function signOutUser() {
+	  _firebase2.default.auth().signOut().then(function () {
+	    // Sign-out successful.
+	    console.log('Signout SUCCESS');
+	  }, function (error) {
+	    console.log('Signout ERROR');
+	    return error;
+	    // An error happened.
+	  });
+	}
 
 /***/ },
-/* 275 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -43617,16 +43674,16 @@
 	 *
 	 *   firebase = require('firebase');
 	 */
-	var firebase = __webpack_require__(276);
-	__webpack_require__(277);
-	__webpack_require__(278);
+	var firebase = __webpack_require__(278);
 	__webpack_require__(279);
 	__webpack_require__(280);
+	__webpack_require__(281);
+	__webpack_require__(282);
 	module.exports = firebase;
 
 
 /***/ },
-/* 276 */
+/* 278 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var firebase = (function(){
@@ -43666,10 +43723,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 277 */
+/* 279 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(276);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(278);
 	(function(){
 	/*! @license Firebase v3.6.3
 	    Build: 3.6.3-rc.6
@@ -43892,10 +43949,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 278 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(276);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(278);
 	(function(){
 	/*! @license Firebase v3.6.3
 	    Build: 3.6.3-rc.6
@@ -44163,10 +44220,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 279 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(276);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(278);
 	(function(){
 	/*! @license Firebase v3.6.3
 	    Build: 3.6.3-rc.6
@@ -44223,10 +44280,10 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 280 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(276);
+	/* WEBPACK VAR INJECTION */(function(global) {var firebase = __webpack_require__(278);
 	(function(){
 	/*! @license Firebase v3.6.3
 	    Build: 3.6.3-rc.6
@@ -44268,7 +44325,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 281 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44276,60 +44333,32 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.authenticateUserByFacebook = authenticateUserByFacebook;
-	exports.signOutUser = signOutUser;
 	
-	var _firebase = __webpack_require__(275);
+	var _react = __webpack_require__(1);
 	
-	var _firebase2 = _interopRequireDefault(_firebase);
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _auth = __webpack_require__(276);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var database = _firebase2.default.database();
+	var FacebookLogin = function FacebookLogin() {
+	  return _react2.default.createElement(
+	    'div',
+	    {
+	      className: 'facebook-login-container',
+	      onClick: function onClick() {
+	        return (0, _auth.authenticateUserByFacebook)();
+	      }
+	    },
+	    _react2.default.createElement('img', { src: 'http://www.yegara.com/am/sp/fbin.png' })
+	  );
+	};
 	
-	function writeUserData(userId, name, email, imageUrl) {
-	  _firebase2.default.database().ref('users/' + userId).set({
-	    name: name,
-	    email: email,
-	    profile_picture: imageUrl
-	  });
-	}
-	
-	function authenticateUserByFacebook() {
-	  var provider = new _firebase2.default.auth.FacebookAuthProvider();
-	
-	  _firebase2.default.auth().signInWithPopup(provider).then(function (result) {
-	    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-	    var token = result.credential.accessToken;
-	    // The signed-in user info.
-	    var user = result.user;
-	    console.log('SIGN IN SUCCESS', user);
-	  }).catch(function (error) {
-	    console.log('SIGN IN ERROR', error);
-	    // Handle Errors here.
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    // The email of the user's account used.
-	    var email = error.email;
-	    // The firebase.auth.AuthCredential type that was used.
-	    var credential = error.credential;
-	    // ...
-	  });
-	}
-	
-	function signOutUser() {
-	  _firebase2.default.auth().signOut().then(function () {
-	    // Sign-out successful.
-	    console.log('Signout SUCCESS');
-	  }, function (error) {
-	    console.log('Signout ERROR');
-	    return error;
-	    // An error happened.
-	  });
-	}
+	exports.default = FacebookLogin;
 
 /***/ },
-/* 282 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -44337,32 +44366,30 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getAllUsers = getAllUsers;
-	exports.getCurrentUser = getCurrentUser;
 	
-	var _firebase = __webpack_require__(275);
+	var _react = __webpack_require__(1);
 	
-	var _firebase2 = _interopRequireDefault(_firebase);
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _users = __webpack_require__(259);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var database = _firebase2.default.database();
+	var SignOutButton = function SignOutButton() {
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'signout-button-wrapper' },
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'signout-button', onClick: function onClick() {
+	          return (0, _users.signOutUser)();
+	        } },
+	      'SIGN OUT'
+	    )
+	  );
+	};
 	
-	function getAllUsers() {}
-	
-	function getCurrentUser() {
-	  _firebase2.default.auth().onAuthStateChanged(function (user) {
-	    if (user) {
-	      // User is signed in.
-	      console.log('CURRENT USER', user);
-	      return user;
-	    } else {
-	      // No user is signed in.
-	      console.log('NO CURRENT USER');
-	      return null;
-	    }
-	  });
-	}
+	exports.default = SignOutButton;
 
 /***/ }
 /******/ ]);

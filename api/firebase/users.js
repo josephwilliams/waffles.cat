@@ -1,6 +1,4 @@
-import firebase from 'firebase';
-
-const database = firebase.database();
+import firebase, { auth, database } from 'firebase';
 
 export function getAllUsers() {
 
