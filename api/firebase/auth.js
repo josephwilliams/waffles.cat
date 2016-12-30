@@ -1,5 +1,15 @@
 import firebase from 'firebase';
 
+const database = firebase.database();
+
+function writeUserData(userId, name, email, imageUrl) {
+  firebase.database().ref('users/' + userId).set({
+    name: name,
+    email: email,
+    profile_picture : imageUrl
+  });
+}
+
 export function authenticateUserByFacebook() {
   const provider = new firebase.auth.FacebookAuthProvider();
 
@@ -20,7 +30,7 @@ export function authenticateUserByFacebook() {
     var credential = error.credential;
     // ...
   });
-};
+}
 
 export function signOutUser() {
   firebase.auth().signOut().then(function() {
