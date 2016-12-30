@@ -1,6 +1,6 @@
 import firebase, { auth, database } from 'firebase';
 
-function writeUserData(userId, name, email, imageUrl) {
+export function writeUserData(userId, name, email, imageUrl) {
   firebase.database().ref('users/' + userId).set({
     name: name,
     email: email,

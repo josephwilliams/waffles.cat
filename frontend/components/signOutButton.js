@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {
-  signOutUser,
-} from '../../api/firebase/auth';
+// import {
+//   signOutUser,
+// } from '../../api/firebase/auth';
 
-const SignOutButton = () => (
+const SignOutButton = ({ onButtonClick }) => (
   <div className="signout-button-wrapper">
     <div
       className="signout-button"
-      onClick={()=>signOutUser()}
+      onClick={()=>onButtonClick()}
     >
       {'SIGN OUT'}
     </div>

@@ -24977,13 +24977,9 @@
 	
 	var _catImageCSS2 = _interopRequireDefault(_catImageCSS);
 	
-	var _loginFacebook = __webpack_require__(281);
+	var _authUI = __webpack_require__(286);
 	
-	var _loginFacebook2 = _interopRequireDefault(_loginFacebook);
-	
-	var _SignOutButton = __webpack_require__(283);
-	
-	var _SignOutButton2 = _interopRequireDefault(_SignOutButton);
+	var _authUI2 = _interopRequireDefault(_authUI);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -25001,30 +24997,18 @@
 	
 	    var _this = _possibleConstructorReturn(this, (Splash.__proto__ || Object.getPrototypeOf(Splash)).call(this));
 	
-	    _this.state = {
-	      currentUser: null
-	    };
+	    _this.state = {};
 	    return _this;
 	  }
 	
 	  _createClass(Splash, [{
-	    key: 'componentDidMount',
-	    value: function componentDidMount() {
-	      var currentUser = (0, _users.getCurrentUserBasic)();
-	      this.setState({ currentUser: currentUser });
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var currentUser = this.state.currentUser;
-	
-	      console.log('RENDER current user check', currentUser);
-	
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'splash-container' },
 	        _react2.default.createElement(_catImageCSS2.default, null),
-	        !currentUser ? _react2.default.createElement(_loginFacebook2.default, null) : _react2.default.createElement(_SignOutButton2.default, null)
+	        _react2.default.createElement(_authUI2.default, null)
 	      );
 	    }
 	  }]);
@@ -44179,7 +44163,7 @@
 /* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -44189,98 +44173,35 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _auth = __webpack_require__(282);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var FacebookLogin = function FacebookLogin() {
+	// import {
+	//   authenticateUserByFacebook,
+	// } from '../../api/firebase/auth';
+	
+	var FacebookLogin = function FacebookLogin(_ref) {
+	  var onButtonClick = _ref.onButtonClick;
+	
 	  return _react2.default.createElement(
-	    'div',
+	    "div",
 	    {
-	      className: 'facebook-login-container',
+	      className: "facebook-login-container",
 	      onClick: function onClick() {
-	        return (0, _auth.authenticateUserByFacebook)();
+	        return onButtonClick();
 	      }
 	    },
-	    _react2.default.createElement('img', { src: 'http://www.yegara.com/am/sp/fbin.png' })
+	    _react2.default.createElement("img", { src: "http://www.yegara.com/am/sp/fbin.png" })
 	  );
 	};
 	
 	exports.default = FacebookLogin;
 
 /***/ },
-/* 282 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.authenticateUserByFacebook = authenticateUserByFacebook;
-	exports.signOutUser = signOutUser;
-	
-	var _firebase = __webpack_require__(260);
-	
-	var _firebase2 = _interopRequireDefault(_firebase);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function writeUserData(userId, name, email, imageUrl) {
-	  _firebase2.default.database().ref('users/' + userId).set({
-	    name: name,
-	    email: email,
-	    profile_picture_url: imageUrl
-	  });
-	}
-	
-	function authenticateUserByFacebook() {
-	  var provider = new _firebase2.default.auth.FacebookAuthProvider();
-	
-	  _firebase2.default.auth().signInWithPopup(provider).then(function (result) {
-	    // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-	    var token = result.credential.accessToken;
-	    // The signed-in user info.
-	    var user = result.user;
-	    console.log('SIGN IN SUCCESS', user);
-	
-	    var uid = user.uid,
-	        displayName = user.displayName,
-	        email = user.email,
-	        photoURL = user.photoURL;
-	
-	    // add user data to /users (stored separate in firebase than auth)
-	
-	    writeUserData(uid, displayName, email, photoURL);
-	  }).catch(function (error) {
-	    console.log('SIGN IN ERROR', error);
-	    // Handle Errors here.
-	    var errorCode = error.code;
-	    var errorMessage = error.message;
-	    // The email of the user's account used.
-	    var email = error.email;
-	    // The firebase.auth.AuthCredential type that was used.
-	    var credential = error.credential;
-	    // ...
-	  });
-	}
-	
-	function signOutUser() {
-	  _firebase2.default.auth().signOut().then(function () {
-	    // Sign-out successful.
-	    console.log('Signout SUCCESS');
-	  }, function (error) {
-	    console.log('Signout ERROR');
-	    return error;
-	    // An error happened.
-	  });
-	}
-
-/***/ },
+/* 282 */,
 /* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -44290,20 +44211,23 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _auth = __webpack_require__(282);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var SignOutButton = function SignOutButton() {
+	// import {
+	//   signOutUser,
+	// } from '../../api/firebase/auth';
+	
+	var SignOutButton = function SignOutButton(_ref) {
+	  var onButtonClick = _ref.onButtonClick;
 	  return _react2.default.createElement(
-	    'div',
-	    { className: 'signout-button-wrapper' },
+	    "div",
+	    { className: "signout-button-wrapper" },
 	    _react2.default.createElement(
-	      'div',
+	      "div",
 	      {
-	        className: 'signout-button',
+	        className: "signout-button",
 	        onClick: function onClick() {
-	          return (0, _auth.signOutUser)();
+	          return onButtonClick();
 	        }
 	      },
 	      'SIGN OUT'
@@ -44343,6 +44267,135 @@
 	  console.log('initalizing firebase app');
 	  firebase.initializeApp(config);
 	}
+
+/***/ },
+/* 285 */,
+/* 286 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _firebase = __webpack_require__(260);
+	
+	var _firebase2 = _interopRequireDefault(_firebase);
+	
+	var _users = __webpack_require__(259);
+	
+	var _loginFacebook = __webpack_require__(281);
+	
+	var _loginFacebook2 = _interopRequireDefault(_loginFacebook);
+	
+	var _SignOutButton = __webpack_require__(283);
+	
+	var _SignOutButton2 = _interopRequireDefault(_SignOutButton);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var Splash = function (_Component) {
+	  _inherits(Splash, _Component);
+	
+	  function Splash() {
+	    _classCallCheck(this, Splash);
+	
+	    var _this = _possibleConstructorReturn(this, (Splash.__proto__ || Object.getPrototypeOf(Splash)).call(this));
+	
+	    _this.state = {
+	      currentUser: null
+	    };
+	    _this.authenticateUserByFacebook = _this.authenticateUserByFacebook.bind(_this);
+	    _this.signOutUser = _this.signOutUser.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(Splash, [{
+	    key: 'authenticateUserByFacebook',
+	    value: function authenticateUserByFacebook() {
+	      var that = this;
+	
+	      var provider = new _firebase2.default.auth.FacebookAuthProvider();
+	
+	      _firebase2.default.auth().signInWithPopup(provider).then(function (result) {
+	        // This gives you a Facebook Access Token. You can use it to access the Facebook API.
+	        var token = result.credential.accessToken;
+	        // The signed-in user info.
+	        var user = result.user;
+	        console.log('SIGN IN SUCCESS', user);
+	
+	        that.setState({ currentUser: user });
+	
+	        var uid = user.uid,
+	            displayName = user.displayName,
+	            email = user.email,
+	            photoURL = user.photoURL;
+	        // add user data to /users (stored separate in firebase than auth)
+	
+	        (0, _users.writeUserData)(uid, displayName, email, photoURL);
+	      }).catch(function (error) {
+	        console.log('SIGN IN ERROR', error);
+	        // Handle Errors here.
+	        var errorCode = error.code;
+	        var errorMessage = error.message;
+	        // The email of the user's account used.
+	        var email = error.email;
+	        // The firebase.auth.AuthCredential type that was used.
+	        var credential = error.credential;
+	        // ...
+	      });
+	    }
+	  }, {
+	    key: 'signOutUser',
+	    value: function signOutUser() {
+	      var that = this;
+	      _firebase2.default.auth().signOut().then(function () {
+	        // Sign-out successful.
+	        console.log('Signout SUCCESS');
+	        that.setState({ currentUser: null });
+	      }, function (error) {
+	        console.log('Signout ERROR');
+	        return error;
+	        // An error happened.
+	      });
+	    }
+	  }, {
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var currentUser = (0, _users.getCurrentUserBasic)();
+	      this.setState({ currentUser: currentUser });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var currentUser = this.state.currentUser;
+	
+	
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'auth-container' },
+	        !currentUser ? _react2.default.createElement(_loginFacebook2.default, { onButtonClick: this.authenticateUserByFacebook }) : _react2.default.createElement(_SignOutButton2.default, { onButtonClick: this.signOutUser })
+	      );
+	    }
+	  }]);
+	
+	  return Splash;
+	}(_react.Component);
+	
+	exports.default = Splash;
 
 /***/ }
 /******/ ]);

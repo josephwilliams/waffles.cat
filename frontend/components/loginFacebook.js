@@ -1,14 +1,14 @@
 import React from 'react';
 
-import {
-  authenticateUserByFacebook,
-} from '../../api/firebase/auth';
+// import {
+//   authenticateUserByFacebook,
+// } from '../../api/firebase/auth';
 
-const FacebookLogin = () => {
+const FacebookLogin = ({ onButtonClick }) => {
   return (
     <div
       className="facebook-login-container"
-      onClick={() => authenticateUserByFacebook()}
+      onClick={() => onButtonClick()}
     >
       <img src="http://www.yegara.com/am/sp/fbin.png" />
     </div>

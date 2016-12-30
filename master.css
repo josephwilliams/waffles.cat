@@ -52,6 +52,9 @@ html, body {
    font-family: 'Open Sans', sans-serif;
  }
 
+.auth-container {
+}
+
  .facebook-login-container {
    width: 200px;
    height: 40px;

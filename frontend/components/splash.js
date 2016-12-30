@@ -5,30 +5,19 @@ import {
 } from '../../api/firebase/users';
 
 import CatImage from './catImageCSS';
-import LoginFacebook from './loginFacebook';
-import SignOutButton from './SignOutButton';
+import AuthUI from './authUI';
 
 export default class Splash extends Component {
   constructor() {
     super();
-    this.state = {
-      currentUser: null,
-    };
-  }
-
-  componentDidMount() {
-    const currentUser = getCurrentUserBasic();
-    this.setState({ currentUser: currentUser });
+    this.state = {};
   }
 
   render() {
-    const { currentUser } = this.state;
-    console.log('RENDER current user check', currentUser);
-
     return (
       <div className="splash-container">
         <CatImage />
-        { !currentUser ? <LoginFacebook /> : <SignOutButton /> }
+        <AuthUI />
       </div>
     );
   }
