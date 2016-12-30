@@ -44511,23 +44511,23 @@
 	            var name = user.name,
 	                profile_picture_url = user.profile_picture_url;
 	
-	            console.log('user', name, profile_picture_url);
 	            return _react2.default.createElement(
 	              'div',
-	              { onMouseOver: function onMouseOver() {
-	                  return _this2.hoverOverUser(name);
-	                }, key: idx },
+	              {
+	                onMouseOver: function onMouseOver() {
+	                  return _this2.displayUserName(name);
+	                },
+	                onMouseLeave: function onMouseLeave() {
+	                  return _this2.displayNoName();
+	                },
+	                key: idx
+	              },
 	              _react2.default.createElement(_userObject2.default, {
 	                name: name,
 	                imageUrl: profile_picture_url
 	              })
 	            );
 	          })
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'hovered-user-display' },
-	          hoveredOverUser
 	        )
 	      );
 	    }
@@ -44536,13 +44536,20 @@
 	  return UsersContainer;
 	}(_react.Component);
 	
+	// NOTE decided against using this code to display
+	// the currently hovered over user's name
+	// <div className="hovered-user-display">
+	//   {hoveredOverUser}
+	// </div>
+	
+	
 	exports.default = UsersContainer;
 
 /***/ },
 /* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -44552,15 +44559,20 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
+	var _reactTooltip = __webpack_require__(268);
+	
+	var _reactTooltip2 = _interopRequireDefault(_reactTooltip);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	var UserObject = function UserObject(_ref) {
 	  var name = _ref.name,
 	      imageUrl = _ref.imageUrl;
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "user-object-container" },
-	    _react2.default.createElement("img", { src: imageUrl })
+	    'div',
+	    { className: 'user-object-container', 'data-tip': name },
+	    _react2.default.createElement(_reactTooltip2.default, { place: 'bottom', type: 'light', effect: 'float' }),
+	    _react2.default.createElement('img', { src: imageUrl })
 	  );
 	};
 	

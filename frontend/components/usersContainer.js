@@ -18,7 +18,7 @@ export default class UsersContainer extends Component {
     const that = this;
     return firebase.database().ref('/users').once('value').then(function(snapshot) {
       var users = snapshot.val();
-      
+
       console.log('ALL USERS', users);
 
       let usersArr = [];
@@ -47,9 +47,12 @@ export default class UsersContainer extends Component {
           {!!users &&
             users.map((user, idx) => {
               const { name, profile_picture_url } = user;
-              console.log('user', name, profile_picture_url);
               return (
-                <div onMouseOver={()=>this.hoverOverUser(name)} key={idx}>
+                <div
+                  onMouseOver={()=>this.displayUserName(name)}
+                  onMouseLeave={()=>this.displayNoName()}
+                  key={idx}
+                >
                   <UserObject
                     name={name}
                     imageUrl={profile_picture_url}
@@ -59,10 +62,13 @@ export default class UsersContainer extends Component {
             })
           }
         </div>
-        <div className="hovered-user-display">
-          {hoveredOverUser}
-        </div>
       </div>
     )
   }
 }
+
+// NOTE decided against using this code to display
+// the currently hovered over user's name
+// <div className="hovered-user-display">
+//   {hoveredOverUser}
+// </div>

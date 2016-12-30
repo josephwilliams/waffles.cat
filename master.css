@@ -79,6 +79,7 @@ html, body {
   border-radius: 5px;
   cursor: pointer;
   transition: background 0.1s ease;
+  max-width: 72px;
 }
 
 .signout-button:hover {
@@ -89,26 +90,29 @@ html, body {
 .signout-button-wrapper {
 }
 
+.users-wrapper {
+  margin: 20px 20px;
+}
+
 .users-container {
   max-width: 300px;
-  min-height: 100px;
 }
 
 .user-object-container {
-  width: 60px;
-  height: 60px;
-  border: 1px solid white;
+  display: inline-block;
+  margin: 5px;
 }
 
 .user-object-container img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid grey;
+  border: 3px solid #9494b9;
 }
 
 .hovered-user-display {
-  color: white;
+  min-width: 100px;
+  color: #716f8f;
   font-family: 'Gloria Hallelujah', cursive;
   font-size: 13px;
 }
