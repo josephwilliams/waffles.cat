@@ -104,10 +104,10 @@ html, body {
 }
 
 .user-object-container img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
-  border: 3px solid #9494b9;
+  border: 5px solid #9494b9;
 }
 
 .hovered-user-display {
