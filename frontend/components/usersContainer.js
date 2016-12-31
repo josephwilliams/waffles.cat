@@ -5,6 +5,8 @@ import _ from 'lodash';
 
 import UserObject from './userObject';
 
+// TODO set up promises such that refresh isn't required to show users
+
 export default class UsersContainer extends Component {
   constructor(props) {
     super(props);
